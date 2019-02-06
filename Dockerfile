@@ -14,4 +14,4 @@ WORKDIR /app
 
 COPY --from=builder /go/src/github.com/gregory-vc/api-getway/api-getway .
 
-CMD ["./api-getway"]
+CMD ["./api-getway", "api"]

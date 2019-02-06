@@ -1,21 +1,10 @@
 package main
 
 import (
-	"log"
-
-	"github.com/micro/go-micro"
-
 	_ "github.com/micro/go-plugins/broker/nats"
+	"github.com/micro/micro/cmd"
 )
 
 func main() {
-	service := micro.NewService(
-		micro.Name("go.micro.api.example"),
-	)
-
-	service.Init()
-
-	if err := service.Run(); err != nil {
-		log.Fatal(err)
-	}
+	cmd.Init()
 }
