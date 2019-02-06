@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
-	plugin.Register(cors.NewPlugin())
+
 	cmd.Init()
+	plugin.Register(cors.NewPlugin())
 }
