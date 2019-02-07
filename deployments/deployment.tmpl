@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-getway
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-getway
+  template:
+    metadata:
+      labels:
+        app: api-getway
+    spec:
+        containers:
+        - name: api-getway
+          image: eu.gcr.io/my-project-tattoor/api-getway:latest
+          args:
+            - "./api-getway"
+            - "api"
+            - "--handler=rpc"
+          env:
+          - name: MICRO_API_ADDRESS
+            value: ":80"
+          - name: MICRO_BROKER
+            value: "nats"
+          - name: MICRO_BROKER_ADDRESS
+            value: "nats:4222"
+          - name: CORS_ALLOWED_HEADERS
+            value: "*"
+          - name: CORS_ALLOWED_ORIGINS
+            value: "*"   
+          - name: CORS_ALLOWED_METHODS
+            value: "POST,OPTIONS"
+          - name: UPDATED_AT
+            value: "{{ UPDATED_AT }}"
+          ports:
+          - containerPort: 80
+            name: port
