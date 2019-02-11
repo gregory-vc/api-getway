@@ -18,7 +18,7 @@ spec:
           args:
             - "./api-getway"
             - "api"
-            - "--handler=rpc"
+            - "--handler=event"
           env:
           - name: MICRO_API_ADDRESS
             value: ":80"
@@ -33,7 +33,7 @@ spec:
           - name: CORS_ALLOWED_METHODS
             value: "POST,OPTIONS"
           - name: UPDATED_AT
-            value: "Пн фев 11 14:47:09 MSK 2019"
+            value: "Пн фев 11 17:18:58 MSK 2019"
           ports:
           - containerPort: 8080
             name: port
