@@ -33,7 +33,7 @@ spec:
           - name: CORS_ALLOWED_METHODS
             value: "POST,OPTIONS"
           - name: UPDATED_AT
-            value: "Чт фев 14 13:50:12 MSK 2019"
+            value: "Чт фев 14 13:51:15 MSK 2019"
           ports:
           - containerPort: 8080
             name: port
