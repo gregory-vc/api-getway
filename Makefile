@@ -5,8 +5,8 @@ build:
 		git push origin master
 
 registry:
-		docker build -t eu.gcr.io/my-project-tattoor/api-getway:latest .
-		gcloud docker -- push eu.gcr.io/my-project-tattoor/api-getway:latest
+		docker build -t eu.gcr.io/hprofits/api-getway:latest .
+		docker push eu.gcr.io/hprofits/api-getway:latest
 
 deploy:
 	go mod vendor
@@ -14,6 +14,6 @@ deploy:
 	git add --all
 	git diff-index --quiet HEAD || git commit -a -m 'fix'
 	git push origin master
-	docker build -t eu.gcr.io/my-project-tattoor/api-getway:latest .
-	gcloud docker -- push eu.gcr.io/my-project-tattoor/api-getway:latest
+	docker build -t eu.gcr.io/hprofits/api-getway:latest .
+	docker push eu.gcr.io/hprofits/api-getway:latest
 	kubectl replace -f ./deployments/deployment.yml
