@@ -1,12 +1,15 @@
 package main
 
 import (
+	"os"
+
 	_ "github.com/micro/go-plugins/broker/nats"
 	"github.com/micro/go-plugins/micro/cors"
 	"github.com/micro/micro/plugin"
+	"github.com/micro/go-micro"
 
 	// _ "github.com/micro/go-plugins/registry/kubernetes"
-	_ "github.com/micro/go-plugins/broker/stan"
+	stan "github.com/micro/go-plugins/broker/stan"
 	_ "github.com/micro/go-plugins/registry/nats"
 	_ "github.com/micro/go-plugins/selector/static"
 	_ "github.com/micro/go-plugins/transport/nats"
@@ -23,5 +26,11 @@ func main() {
 	// os.Setenv("MICRO_SELECTOR", "static")
 
 	// init command
-	cmd.Init()
+	cmd.Init(
+		micro.Broker(
+			stan.NewBroker(
+				stan.ClusterID(os.Getenv("MICRO_BROKER_CLUSTER_ID")),
+			),
+		),
+	)
 }
