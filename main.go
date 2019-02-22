@@ -10,6 +10,7 @@ import (
 
 	// _ "github.com/micro/go-plugins/registry/kubernetes"
 	stan "github.com/micro/go-plugins/broker/stan"
+	"github.com/micro/go-micro/broker"
 	_ "github.com/micro/go-plugins/registry/nats"
 	_ "github.com/micro/go-plugins/selector/static"
 	_ "github.com/micro/go-plugins/transport/nats"
@@ -30,6 +31,7 @@ func main() {
 		micro.Broker(
 			stan.NewBroker(
 				stan.ClusterID(os.Getenv("MICRO_BROKER_CLUSTER_ID")),
+				broker.Addrs(os.Getenv("MICRO_BROKER_ADDRESS")),
 			),
 		),
 	)
